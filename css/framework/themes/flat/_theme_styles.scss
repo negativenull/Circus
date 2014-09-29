@@ -1,0 +1,433 @@
+pre, code {
+    border-radius: $border-radius;
+}
+
+.#{$ns}well {
+    border-radius: $border-radius;
+}
+
+/******************************
+    alerts/notifications
+******************************/
+
+.#{$ns}alert {
+    @include alert-style($color-default-dk);
+    i {
+        color: $color-inverse-lt;
+    }
+    &.#{$ns}caution {
+        @include alert-style($color-caution);
+    }
+    &.#{$ns}error {
+        @include alert-style($color-error);
+    }
+    &.#{$ns}success {
+        @include alert-style($color-success);
+    }
+}
+
+
+/******************************
+    buttons
+******************************/
+
+.#{$ns}btn {
+    @include button-style($color-default-lt);
+    &.#{$ns}inverse {
+        @include button-style(($color-inverse-lt));
+    }
+    &.#{$ns}primary {
+        @include button-style($color-primary);
+    }
+    &.#{$ns}secondary {
+        @include button-style($color-secondary);
+    }
+    &.#{$ns}positive {
+        @include button-style($color-positive);
+    }
+    &.#{$ns}caution {
+        @include button-style($color-caution);
+    }
+    &.#{$ns}negative {
+        @include button-style($color-negative);
+    }
+    &.#{$ns}purple {
+        @include button-style($color-purple-lt);
+    }
+    &.#{$ns}turquoise {
+        @include button-style($color-turquoise-lt);
+    }
+}
+.#{$ns}btn-group-vertical {
+    > .#{$ns}btn {
+        @include box-shadow(none);
+        &:last-child {
+            @include box-shadow(inset 0 -3px 0 rgba(black, 0.17));
+        }
+        &:active, &.#{$ns}active {
+            @include box-shadow(inset 0 3px 0 rgba(black, 0.15));
+        }
+    }
+    li {
+        & .#{$ns}btn {
+            @include box-shadow(none);
+        }
+    }
+}
+
+// added for default radius buttons
+.#{$ns}btn { border-radius: $button-border-radius; }
+.#{$ns}btn-group {
+    > .#{$ns}btn {
+        border-radius: 0;
+        &:first-child { border-radius: $button-border-radius 0 0 $button-border-radius; }
+        &:last-child { border-radius: 0 $button-border-radius $button-border-radius 0; }
+    }
+    li {
+        .#{$ns}btn { border-radius: 0; }
+        &:first-child .#{$ns}btn { border-radius: $button-border-radius 0 0 $button-border-radius; }
+        &:last-child .#{$ns}btn { border-radius: 0 $button-border-radius $button-border-radius 0; }
+        &:first-child .#{$ns}round { border-radius: 100px 0 0 100px; }
+        &:last-child .#{$ns}round { border-radius: 0 100px 100px 0; }
+    }
+    > .#{$ns}round {
+        &:first-child { border-radius: 100px 0 0 100px; }
+        &:last-child { border-radius: 0 100px 100px 0; }
+    }
+}
+.#{$ns}btn-group-vertical {
+    > .#{$ns}btn {
+        border-radius: 0;
+        &:first-child { border-radius: $button-border-radius $button-border-radius 0 0; }
+        &:last-child { border-radius: 0 0 $button-border-radius $button-border-radius; }
+    }
+    li {
+        .#{$ns}btn { border-radius: 0; }
+        &:first-child .#{$ns}btn { border-radius: $button-border-radius $button-border-radius 0 0; }
+        &:last-child .#{$ns}btn { border-radius: 0 0 $button-border-radius $button-border-radius; }
+    }
+}
+
+
+/******************************
+    form elements
+******************************/
+
+input,
+select,
+textarea {
+    background-color: #fff;
+    border: 2px solid $color-default-lt;
+    border-radius: $border-radius;
+    &.#{$ns}error {
+        border-color: lighten($color-error, 20);
+        &:focus {
+            @include input-focus($color-error);
+        }
+    }
+    &.#{$ns}success {
+        border-color: lighten($color-success, 5);
+        &:focus {
+            @include input-focus($color-success);
+        }
+    }
+    &:disabled {
+        border-color: $color-default;
+        background-color: $color-default-lt;
+    }
+}
+
+.#{$ns}select select {
+    border-radius: $border-radius;
+}
+
+fieldset {
+    border-radius: $border-radius;
+}
+
+.#{$ns}input-combo {
+    span.#{$ns}add-on,
+    label.#{$ns}add-on {
+        border: 2px solid $color-default-lt;
+        background-color: lighten($color-default-lt, 5);
+    }
+}
+
+.#{$ns}input-combo {
+    .#{$ns}add-on:first-child {
+        border-radius: $border-radius 0 0 $border-radius;
+    }
+    .#{$ns}add-on:last-child {
+        border-radius: 0 $border-radius $border-radius 0;
+    }
+    input,
+    .#{$ns}select, select {
+        border-radius: 0;
+        &:first-child {
+            border-radius: $border-radius 0 0 $border-radius;
+        }
+        &:last-child {
+            border-radius: 0 $border-radius $border-radius 0;
+        }
+    }
+}
+
+input[type=checkbox],
+input[type=radio] {
+    body:not(#foo) & {
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+        @include rem(margin-right, 5px);
+        @include opacity(0);
+    }
+    + label {
+        display: inline-block;
+        position: relative;
+        &:before {
+            @include font-icon();
+            content: "\f00c";
+            position: absolute;
+            display: inline-block;
+            @include rem(width, 19px);
+            @include rem(height, 19px);
+            color: transparent;
+            background-color: $color-default-lt;
+            border: 1px solid $color-default;
+            @include rem(left, -26px); // pull over default input
+            top: 0;
+            z-index: 2;
+            text-align: center;
+            vertical-align: top;
+            @include rem(font-size, 14px);
+            line-height: 1.3;
+            @include transition(background-color 200ms, border-color 200ms, color 200ms);
+            border-radius: $border-radius;
+            .lt-ie9 & {
+                display: none;
+            }
+        }
+    }
+    &:focus + label:before {
+        outline: 2px solid $color-focus;
+    }
+    &:hover + label:before {
+        color: $color-text-lt;
+    }
+    &:checked + label:before {
+        border-color: $color-primary-dk;
+        background-color: $color-primary;
+        color: $color-text-lt;
+    }
+    &:disabled {
+        + label {
+            color: lighten($color-text, 35);
+            cursor: default;
+        }
+        + label:before {
+            border-color: lighten($color-default, 8);
+            border-color: transparentize($color-default, 0.6);
+            background-color: lighten($color-default-lt, 8);
+            background-color: transparentize($color-default-lt, 0.6);
+            color: transparent;
+        }
+        &:checked + label:before {
+            border-color: lighten($color-default, 8);
+            border-color: transparentize($color-default, 0.6);
+            background-color: lighten($color-default-lt, 8);
+            background-color: transparentize($color-default-lt, 0.6);
+            color: lighten($color-default, 8);
+            color: transparentize($color-default, 0.6);
+        }
+    }
+}
+
+input[type=radio] {
+    + label:before {
+        border-width: 3px;
+        background-color: transparent;
+        @include rem(font-size, 10px);
+        content: "\f111";
+        border-radius: 100%;
+    }
+    &:hover + label:before {
+        color: $color-default;
+    }
+    &:checked + label:before {
+        border-color: $color-primary;
+        background-color: transparent;
+        color: $color-primary;
+    }
+    &:disabled {
+        + label {
+            color: lighten($color-text, 35);
+            cursor: default;
+        }
+        + label:before {
+            border-color: lighten($color-default, 8);
+            border-color: transparentize($color-default, 0.6);
+            background-color: transparent;
+            color: transparent;
+        }
+        &:checked {
+            + label:before {
+                border-color: lighten($color-default, 8);
+                border-color: transparentize($color-default, 0.6);
+                background-color: transparent;
+                color: lighten($color-default, 8);
+                color: transparentize($color-default, 0.6);
+            }
+        }
+    }
+}
+
+
+/******************************
+    navigation
+******************************/
+
+.#{$ns}navbar {
+    @include navbar-style($color-default-lt, true);
+    .#{$ns}menu {
+        @include menu-style($color-default-lt);
+    }
+    &.#{$ns}inverse {
+        @include navbar-style($color-inverse-lt);
+        .#{$ns}menu {
+            @include menu-style($color-inverse-lt);
+        }
+    }
+}
+.#{$ns}nav {
+    &.#{$ns}list {
+        & li {
+            border-top: 1px solid $color-default-lt;
+            &:first-child {
+                border-top: none;
+            }
+        }
+        &.#{$ns}box {
+            a:hover {
+                background: $color-default-lt;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+/******************************
+    modals
+******************************/
+
+.#{$ns}box {
+    border-radius: $border-radius;
+    border: 1px solid darken($color-white, 15);
+    background-color: #fff;
+    .#{$ns}header {
+        border: 1px solid darken($color-white, 15);
+        background-color: $color-default-lt;
+        border-radius: $border-radius $border-radius 0 0;
+        + .#{$ns}body {
+            border-radius: 0 0 $border-radius $border-radius;
+        }
+    }
+    .#{$ns}body {
+        background-color: #fff;
+        border-left: 1px solid $color-default-lt;
+        border-right: 1px solid $color-default-lt;
+        border-radius: $border-radius;
+        &:last-child {
+            @include box-shadow(inset 0 -3px 0 rgba(black, 0.14));
+        }
+    }
+    .#{$ns}footer {
+        margin: -$border-radius -1px -1px -1px;
+        background-color: white;
+        border: 1px solid $color-default-lt;
+        border-top-color: lighten($color-default-lt, 5);
+        border-radius: 0 0 $border-radius $border-radius;
+        @include box-shadow(inset 0 -3px 0 rgba(black, 0.14));
+    }
+}
+
+.#{$ns}modal {
+    @include box-shadow(0 2px 6px rgba(black, 0.40));
+    .#{$ns}header {
+        @extend .#{$ns}alert;
+        background-color: lighten($color-default-lt, 8);
+        border-color: $color-default-lt;
+        color: $color-text;
+        i {
+            color: $color-inverse-lt;
+        }
+        .#{$ns}close {
+            i.fa-times {
+                color: lighten($color-text, 20);
+            }
+            &:hover i.fa-times {
+                color: $color-text;
+            }
+        }
+    }
+}
+
+
+/******************************
+    tooltips
+******************************/
+
+.#{$ns}tooltip {
+    opacity: 0.95;
+    background-color: $color-inverse;
+    border: 2px solid darken($color-inverse, 3);
+    color: $color-text-lt;
+    border-radius: $border-radius;
+    @include box-shadow(0 1px 3px rgba(black, 0.30));
+    &:after {
+        color: darken($color-inverse, 3);
+    }
+    &.#{$ns}alert {
+        @extend .#{$ns}alert;
+        opacity: 0.95;
+        @include box-shadow(0 1px 3px rgba(black, 0.15));
+        @include alert-style($color-default-dk, "tooltip");
+    }
+    &.#{$ns}success {
+        @include alert-style($color-success, "tooltip");
+    }
+    &.#{$ns}caution {
+        @include alert-style($color-caution, "tooltip");
+    }
+    &.#{$ns}error {
+        @include alert-style($color-error, "tooltip");
+    }
+}
+
+
+/******************************
+    tabs
+******************************/
+
+.#{$ns}tab-nav {
+    border-bottom: 1px solid $color-default-lt;
+    li {
+        margin-bottom: -1px;
+        a {
+            border: 1px solid transparent;
+            border-radius: $border-radius $border-radius 0 0;
+            @include rem(line-height, $height-default);
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        &.#{$ns}active a,
+        &.active a {
+            color: $color-text;
+            background-color: #fff;
+            border-color: $color-default-lt;
+            border-bottom-color: transparent;
+            text-decoration: none;
+        }
+    }
+}

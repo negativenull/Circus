@@ -1,0 +1,203 @@
+/******************************
+    alerts/notifications
+******************************/
+
+@mixin alert-style($color, $type: false) {
+    $text-color: $color-text;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $border-radius;
+    @if ($type == 'tooltip') {
+        &:after {
+            color: $color;
+        }
+    } @else {
+        background-color: desaturate( mix($color, #fff, 6), 10);
+        border-color: mix($color, #fff, 40);
+        color: $text-color;
+        i {
+            color: $color;
+            font-size: 135%;
+            vertical-align: -10%;
+        }
+        & .#{$ns}close {
+            i {
+                font-size: 110%;
+                color: mix($color, #fff, 60);
+            }
+            &:hover i {
+                color: $color;
+            }
+        }
+    }
+}
+
+
+/******************************
+    buttons
+******************************/
+
+@mixin button-style($color: $color-primary) {
+    $text-color: $color-text-lt;
+    $btn-inset-shadow: inset 0 -3px 0 rgba(black, 0.17);
+    $text-shadow: 1px 1px 2px darken($color, 12);
+
+    @if lightness($color) > 60% {
+        $text-color: $color-inverse-lt;
+        $btn-inset-shadow: inset 0 -3px 0 darken($color, 12);
+        $text-shadow: none;
+    }
+
+    @include transition(background-color 250ms, box-shadow 250ms);
+    color: $text-color;
+    box-shadow: $btn-inset-shadow;
+    background-color: $color;
+    text-shadow: $text-shadow;
+    &:hover {
+        background-color: lighten($color, 5);
+        @include box-shadow(
+            #{$btn-inset-shadow},
+            inset 0 -1px 0 rgba(black, 0.17)
+        );
+    }
+    &:active, &.#{$ns}active {
+        color: $text-color;
+        background-color: darken($color, 5);
+        @if lightness($color) > 60% {
+            @include box-shadow(inset 0 2px 0 darken($color, 12));
+        } @else {
+            @include box-shadow(inset 0 2px 0 rgba(black, 0.15));
+        }
+    }
+    &:disabled, &.#{$ns}disabled {
+        &, &:hover, &:active {
+            text-shadow: none;
+            cursor: default;
+            background: mix($color, #fff, 70);
+            color: mix($text-color, $color, 80);
+            @include box-shadow(inset 0 -3px 0 rgba(black, 0.09));
+        }
+    }
+    &.#{$ns}text {
+        background: none;
+        text-shadow: none;
+        @include box-shadow(none);
+        @if lightness($color) > 60% {
+            color: $text-color;
+        } @else {
+            color: $color;
+        }
+        &:disabled, &.#{$ns}disabled {
+            &, &:hover, &:active {
+                @if lightness($color) > 60% {
+                    color: mix($text-color, #fff, 70);
+                } @else {
+                    color: mix($color, #fff, 70);
+                }
+                background: none;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+/******************************
+    navigation
+******************************/
+
+@mixin navbar-style($color: $color-primary, $light: false) {
+    $text: $color-white;
+    $navbar-shadow: "";
+    @if ($light) {
+        $text: $color-text;
+    }
+    background-color: $color;
+    @include box-shadow(inset 0 -3px 0 rgba(black, 0.17));
+    & .#{$ns}nav > li > a {
+        color: $text;
+        @include transition(background-color 250ms, box-shadow 250ms);
+        @include box-shadow(inset 0 -3px 0 rgba(black, 0.17));
+        background-color: $color;
+        &:hover {
+            background-color: lighten($color, 8);
+            @include box-shadow(inset 0 -3px 0 rgba(black, 0.17));
+        }
+        &:active, &.#{$ns}active {
+            @include box-shadow(inset 0 2px 0 rgba(black, 0.17));
+            background-color: darken($color, 6);
+        }
+    }
+    & .#{$ns}nav > .#{$ns}dropdown:hover > a {
+        background-color: lighten($color, 8);
+        @include box-shadow(inset 0 -3px 0 rgba(black, 0.17));
+    }
+    .#{$ns}dropdown:hover {
+        .#{$ns}menu {
+            margin-top: 8px;
+        }
+        &:before { // fix for hover gap
+            content: "";
+            position: absolute;
+            height: 15px;
+            width: 100%;
+            bottom: -15px;
+            left: 0;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+@mixin menu-style($color: $color-primary, $light: false) {
+    $menu-hover: "";
+    @if ($light) {
+        $text: lighten($color-text, 15);
+        $navbar-shadow: 0 1px 1px rgba(black, 0.06);
+        $menu-hover: darken($color-white, 5);
+    } @else {
+        $text: $color-white;
+        $navbar-shadow: 0 1px 1px rgba(black, 0.18);
+        $menu-hover: mix($color, #fff, 30);
+    }
+    margin-top: 0;
+    border: 2px solid $color-default-lt;
+    background-color: lighten($color-default-lt, 13);
+    @include box-shadow(0 1px 3px rgba(black, 0.1));
+    a {
+        color: lighten($color-text, 15);
+        &:hover {
+            background: $menu-hover;
+        }
+    }
+    &:hover > a {
+        background: $menu-hover;
+    }
+    &:before, &:after {
+        bottom: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        border-width: 10px;
+        left: 08%;
+        @include rem(left, 10px);
+        margin-left: 0px;
+    }
+    &:before {
+        @include rem(top, -21px);
+        border-color: transparent;
+        border-bottom-color: $color-default-lt;
+    }
+    &:after {
+        @include rem(top, -17px);
+        border-width: 9px;
+        left: 09%;
+        @include rem(left, 11px);
+        border-color: transparent;
+        border-bottom-color: lighten($color-default-lt, 13);
+    }
+}
