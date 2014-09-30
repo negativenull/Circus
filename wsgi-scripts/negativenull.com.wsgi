@@ -1,5 +1,6 @@
 import sys
 sys.path.append('../')
+sys.path.append('negativenull.com/')
 from py.functions import Functions
 
 
