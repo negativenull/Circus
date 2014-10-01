@@ -4,6 +4,7 @@ from cgi import escape
 from py.tag import Tag
 from py.db import DB
 
+
 class Urls:
 
     def __init__(self):
