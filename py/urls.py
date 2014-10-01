@@ -30,7 +30,7 @@ class Urls:
                 ''' % {'subject': subject}]
 
     @staticmethod
-    def page(environ, start_response):
+    def pages(environ, start_response):
 
         args = environ['myapp.url_args']
         if args:
