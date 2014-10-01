@@ -2,19 +2,19 @@ __author__ = 'Nathan Meadows'
 
 from cgi import escape
 from py.tag import Tag
-
+from py.urls import Urls
 
 class Urls:
 
     # map urls to functions
-    urls = []
+    urls = [
+            (r'^$', Urls.index),
+            (r'hello/?$', Urls.hello),
+            (r'hello/(.+)$', Urls.hello)
+        ]
 
     def __init__(self):
-        urls = [
-            (r'^$', self.index),
-            (r'hello/?$', self.hello),
-            (r'hello/(.+)$', self.hello)
-        ]
+        pass
 
     @staticmethod
     def index(environ, start_response):

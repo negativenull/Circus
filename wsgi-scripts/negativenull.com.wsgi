@@ -11,6 +11,7 @@ def application(environ, start_response):
 
     path = environ.get('PATH_INFO', '').lstrip('/')
     for regex, callback in Urls.urls:
+
         match = re.search(regex, path)
         if match is not None:
             environ['myapp.url_args'] = match.groups()
