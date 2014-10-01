@@ -7,7 +7,7 @@ class Config:
     dbhost = 'localhost'
     dbport = 5432
     dbusername = 'nathan'
-    dbpassord = ''
+    dbpassword = ''
 
     def __init_(self):
         pass
