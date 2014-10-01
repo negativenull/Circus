@@ -37,17 +37,12 @@ class Urls:
             pageid = escape(args[0])
             #db = DB()
             #page = db.query("select * from pages where id=%d" % pageid, returnone=True)
-            start_response('200 OK', [('Content-Type', 'text/html')])
-            return ["Pageid: %s" % pageid]
         else:
             #return Urls.not_found
-            start_response('200 OK', [('Content-Type', 'text/html')])
-            return ["no page specified"]
-
-        tags = Tag('tag')
+            pageid = "999"
 
         start_response('200 OK', [('Content-Type', 'text/html')])
-        return [page['title']+tags.processTags(page['content'])]
+        return [pageid]
 
     @staticmethod
     def not_found(environ, start_response):
