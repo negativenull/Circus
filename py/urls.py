@@ -30,15 +30,17 @@ class Urls:
                 ''' % {'subject': subject}]
 
     @staticmethod
-    def pages(environ, start_response):
+    def page(environ, start_response):
 
         args = environ['myapp.url_args']
         if args:
-            id = escape(args[0])
+            pageid = escape(args[0])
             db = DB()
-            page = db.query("select * from pages where id=%d" % id, returnone=True)
+            page = db.query("select * from pages where id=%d" % pageid, returnone=True)
         else:
-            return Urls.not_found
+            #return Urls.not_found
+            start_response('200 OK', [('Content-Type', 'text/html')])
+            return [args]
 
         tags = Tag('tag')
 

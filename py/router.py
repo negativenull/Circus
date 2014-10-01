@@ -5,6 +5,6 @@ router = [
             (r'^$', Urls.index),
             (r'hello/?$', Urls.hello),
             (r'hello/(.+)$', Urls.hello),
-            (r'pages/?$', Urls.pages),
-            (r'pages/(.+)$', Urls.pages)
+            (r'page/?$', Urls.page),
+            (r'page/(.+)$', Urls.page)
         ]
