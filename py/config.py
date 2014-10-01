@@ -3,7 +3,7 @@ __author__ = 'Nathan Meadows'
 
 class Config:
 
-    dbname = 'cms'
+    dbname = 'negativenullcom'
     dbhost = 'localhost'
     dbport = 5432
     dbusername = 'nathan'
