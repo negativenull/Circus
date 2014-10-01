@@ -31,18 +31,11 @@ class Urls:
 
     @staticmethod
     def page(environ, start_response):
-        args = environ['myapp.url_args']
-        if args:
-            subject = escape(args[0])
-        else:
-            subject = 'Page'
+        page = []
+        page['title'] = 'Test Title'
+        page['content'] = 'Test Content'
         start_response('200 OK', [('Content-Type', 'text/html')])
-        return ['''Page %(subject)s
-                Page %(subject)s!
-                ''' % {'subject': subject}]
-
-    @staticmethod
-    def page2(environ, start_response):
+        return [page['title'], page['content']]
 
         args = environ['myapp.url_args']
         if args:
