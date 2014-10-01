@@ -10,6 +10,11 @@ from py.router import router
 
 def application(environ, start_response):
 
+    cont = ', '.join(environ)
+    start_response('200 OK', [('Content-Type', 'text/html')])
+    return [cont]
+
+
     path = environ.get('PATH_INFO', '').lstrip('/')
     for regex, callback in router:
 
