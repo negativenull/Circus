@@ -31,6 +31,18 @@ class Urls:
 
     @staticmethod
     def page(environ, start_response):
+        args = environ['myapp.url_args']
+        if args:
+            subject = escape(args[0])
+        else:
+            subject = 'Page'
+        start_response('200 OK', [('Content-Type', 'text/html')])
+        return ['''Page %(subject)s
+                Page %(subject)s!
+                ''' % {'subject': subject}]
+
+    @staticmethod
+    def page2(environ, start_response):
 
         args = environ['myapp.url_args']
         if args:
@@ -46,7 +58,6 @@ class Urls:
 
         start_response('200 OK', [('Content-Type', 'text/html')])
         return [page['title'], tags.processTags(page['content'])]
-
 
     @staticmethod
     def not_found(environ, start_response):
