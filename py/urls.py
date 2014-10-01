@@ -36,7 +36,7 @@ class Urls:
         if args:
             pageid = escape(args[0])
             db = DB()
-            page = db.query("select * from pages where id=%d" % pageid, returnone=True)
+            page = db.query("select * from pages where id=%s" % pageid, returnone=True)
 
         else:
             return Urls.not_found
