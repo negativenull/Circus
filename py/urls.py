@@ -31,9 +31,8 @@ class Urls:
 
     @staticmethod
     def page(environ, start_response):
-        page = []
-        page['title'] = 'Test Title'
-        page['content'] = 'Test Content'
+        page = {'title': 'Test Title', 'content': "Test Content"}
+
         start_response('200 OK', [('Content-Type', 'text/html')])
         return [page['title'], page['content']]
 
