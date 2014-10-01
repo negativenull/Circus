@@ -42,7 +42,7 @@ class Urls:
             return Urls.not_found
 
         start_response('200 OK', [('Content-Type', 'text/html')])
-        return [page]
+        return [page['content']]
 
     @staticmethod
     def not_found(environ, start_response):
