@@ -5,13 +5,13 @@ sys.path.append('negativenull.com/')
 import re
 from py.functions import Functions
 from py.urls import Urls
-from py.router import urls
+from py.router import router
 
 
 def application(environ, start_response):
 
     path = environ.get('PATH_INFO', '').lstrip('/')
-    for regex, callback in urls:
+    for regex, callback in router:
 
         match = re.search(regex, path)
         if match is not None:
