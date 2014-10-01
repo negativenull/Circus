@@ -9,18 +9,18 @@ class DB:
     cur = None
 
     def __init__(self):
-        conn = psycopg2.connect("dbname=%s user=%s password=%s port=%d"
-                                % (Config.dbname,
-                                   Config.dbusername,
-                                   Config.dbpassword,
-                                   Config.dbport
-                                   )
-                                )
+        self.conn = psycopg2.connect("dbname=%s user=%s password=%s port=%d" % (Config.dbname,
+                                                                                Config.dbusername,
+                                                                                Config.dbpassword,
+                                                                                Config.dbport)
+                                     )
 
-    def query(self, query, returnall=False):
+    def query(self, query, returnall=False, returnone=False):
         self.cur = self.conn.execute(query)
         if returnall:
             return self.cur.fetchall()
+        elif returnone:
+            return self.cur.fetchone()
 
     def fetchall(self):
         return self.cur.fetchall()

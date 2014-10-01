@@ -2,7 +2,7 @@ __author__ = 'Nathan Meadows'
 
 from cgi import escape
 from py.tag import Tag
-
+from py.db import DB
 
 class Urls:
 
@@ -35,14 +35,15 @@ class Urls:
         args = environ['myapp.url_args']
         if args:
             id = escape(args[0])
+            db = DB()
+            page = db.query("select * from pages where id=%d" % id, returnone=True)
         else:
             return Urls.not_found
 
-        cont = (open('negativenull.com/index.html').read())
         tags = Tag('tag')
 
         start_response('200 OK', [('Content-Type', 'text/html')])
-        return [tags.processTags(cont)]
+        return [page['title'], tags.processTags(page['content'])]
 
 
     @staticmethod
