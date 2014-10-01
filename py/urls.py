@@ -35,14 +35,14 @@ class Urls:
         args = environ['myapp.url_args']
         if args:
             pageid = escape(args[0])
-            #db = DB()
-            #page = db.query("select * from pages where id=%d" % pageid, returnone=True)
+            db = DB()
+            page = db.query("select * from pages where id=%d" % pageid, returnone=True)
+
         else:
-            #return Urls.not_found
-            pageid = "999"
+            return Urls.not_found
 
         start_response('200 OK', [('Content-Type', 'text/html')])
-        return [pageid]
+        return [page]
 
     @staticmethod
     def not_found(environ, start_response):

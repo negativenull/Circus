@@ -1,5 +1,6 @@
 __author__ = 'Nathan Meadows'
 import psycopg2
+import psycopg2.extras
 from py.config import Config
 
 
@@ -16,7 +17,8 @@ class DB:
                                      )
 
     def query(self, query, returnall=False, returnone=False):
-        self.cur = self.conn.execute(query)
+        self.cur = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        self.cur.execute(query)
         if returnall:
             return self.cur.fetchall()
         elif returnone:
