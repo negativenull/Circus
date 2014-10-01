@@ -6,7 +6,7 @@ from py.tag import Tag
 
 
 def application(environ, start_response):
-    cont = (open('negativenull.com/header.html').read())
+    cont = (open('negativenull.com/index.html').read())
     tags = Tag('tag')
 
 
