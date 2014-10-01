@@ -2,17 +2,13 @@ import sys
 sys.path.append('../')
 sys.path.append('negativenull.com/')
 from py.functions import Functions
-
+from tag import Tag
 
 
 def application(environ, start_response):
     cont = (open('negativenull.com/header.html').read())
+    tags = Tag('tag')
 
-    f = Functions()
-    cont += f.test('from functions.py')
-
-
-    cont += (open('negativenull.com/footer.html').read())
 
     start_response('200 OK', [('Content-Type', 'text/html')])
-    return [cont]
+    return [tags.processTags(cont)]

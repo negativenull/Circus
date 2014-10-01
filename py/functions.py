@@ -1,4 +1,4 @@
-__author__ = 'nathan'
+__author__ = 'Nathan Meadows'
 
 class Functions:
 
