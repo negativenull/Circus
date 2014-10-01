@@ -31,10 +31,6 @@ class Urls:
 
     @staticmethod
     def page(environ, start_response):
-        page = {'title': 'Test Title', 'content': "Test Content"}
-
-        start_response('200 OK', [('Content-Type', 'text/html')])
-        return [page['title'], page['content']]
 
         args = environ['myapp.url_args']
         if args:
