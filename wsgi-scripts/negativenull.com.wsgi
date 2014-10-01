@@ -10,7 +10,7 @@ from py.router import router
 
 def application(environ, start_response):
 
-    cont = ', '.join(environ)
+    cont = str(environ)
     start_response('200 OK', [('Content-Type', 'text/html')])
     return [cont]
 
