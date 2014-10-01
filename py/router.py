@@ -1,4 +1,6 @@
 from py.urls import Urls
+
+#map urls to function
 router = [
             (r'^$', Urls.index),
             (r'hello/?$', Urls.hello),

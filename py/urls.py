@@ -6,8 +6,6 @@ from py.tag import Tag
 
 class Urls:
 
-    # map urls to functions
-
     def __init__(self):
         pass
 
@@ -30,6 +28,22 @@ class Urls:
         return ['''Hello %(subject)s
                 Hello %(subject)s!
                 ''' % {'subject': subject}]
+
+    @staticmethod
+    def page(environ, start_response):
+
+        args = environ['myapp.url_args']
+        if args:
+            id = escape(args[0])
+        else:
+            return Urls.not_found
+
+        cont = (open('negativenull.com/index.html').read())
+        tags = Tag('tag')
+
+        start_response('200 OK', [('Content-Type', 'text/html')])
+        return [tags.processTags(cont)]
+
 
     @staticmethod
     def not_found(environ, start_response):
