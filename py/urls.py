@@ -45,7 +45,7 @@ class Urls:
         tags = Tag('tag')
 
         start_response('200 OK', [('Content-Type', 'text/html')])
-        return [page['title'], tags.processTags(page['content'])]
+        return [page['title']+tags.processTags(page['content'])]
 
     @staticmethod
     def not_found(environ, start_response):
