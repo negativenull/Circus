@@ -3,17 +3,11 @@ sys.path.append('../')
 sys.path.append('negativenull.com/')
 
 import re
-from py.functions import Functions
 from py.urls import Urls
 from py.router import router
 
 
 def application(environ, start_response):
-
-    cont = str(environ)
-    start_response('200 OK', [('Content-Type', 'text/html')])
-    return [cont]
-
 
     path = environ.get('PATH_INFO', '').lstrip('/')
     for regex, callback in router:
