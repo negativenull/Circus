@@ -35,12 +35,14 @@ class Urls:
         args = environ['myapp.url_args']
         if args:
             pageid = escape(args[0])
-            db = DB()
-            page = db.query("select * from pages where id=%d" % pageid, returnone=True)
+            #db = DB()
+            #page = db.query("select * from pages where id=%d" % pageid, returnone=True)
+            start_response('200 OK', [('Content-Type', 'text/html')])
+            return ["Pageid: %s" % pageid]
         else:
             #return Urls.not_found
             start_response('200 OK', [('Content-Type', 'text/html')])
-            return [args]
+            return ["no page specified"]
 
         tags = Tag('tag')
 
