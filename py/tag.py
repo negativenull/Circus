@@ -120,3 +120,6 @@ class Tag:
 
     def siteTitle(self, args):
         return self.replace(Config.siteTitle)
+
+    def siteContent(self, arogs):
+        return self.replace('')
