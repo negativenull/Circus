@@ -2,6 +2,7 @@ __author__ = 'Nathan Meadows'
 import re
 import csv
 import StringIO
+from config import Config
 
 class Tag:
     tagstring = 'tag'
@@ -115,3 +116,6 @@ class Tag:
         vidcontent = '<iframe width="' + width + '" height="' + height + '" src="//www.youtube.com/embed' + path + '" frameborder="0" allowfullscreen></iframe>'
 
         return self.replace(vidcontent)
+
+    def siteTitle(self, args):
+        return self.replace(Config.siteTitle)

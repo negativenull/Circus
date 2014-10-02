@@ -15,7 +15,6 @@ class Urls:
         cont = (open('negativenull.com/views/index.html').read())
         tags = Tag('tag')
 
-        start_response('200 OK', [('Content-Type', 'text/html')])
         return [tags.processTags(cont)]
 
     @staticmethod
@@ -25,7 +24,6 @@ class Urls:
             subject = escape(args[0])
         else:
             subject = 'World'
-        start_response('200 OK', [('Content-Type', 'text/html')])
         return ['''Hello %(subject)s
                 Hello %(subject)s!
                 ''' % {'subject': subject}]
@@ -42,12 +40,10 @@ class Urls:
         else:
             return Urls.not_found
 
-        start_response('200 OK', [('Content-Type', 'text/html')])
         return [page['content']]
 
     @staticmethod
     def not_found(environ, start_response):
         cont = (open('negativenull.com/views/404.html').read())
-        start_response('404 NOT FOUND', [('Content-Type', 'text/html')])
         return [cont]
 

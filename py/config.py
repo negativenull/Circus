@@ -9,5 +9,7 @@ class Config:
     dbusername = 'nathan'
     dbpassword = ''
 
-    def __init_(self):
+    siteTitle = 'Circus Framework'
+
+    def __init__(self):
         pass
