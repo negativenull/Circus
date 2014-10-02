@@ -4,6 +4,7 @@ import csv
 import StringIO
 from config import Config
 
+
 class Tag:
     tagstring = 'tag'
     content = ''
