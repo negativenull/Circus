@@ -13,7 +13,7 @@ class Urls:
     @staticmethod
     def index(environ, start_response):
         cont = (open('negativenull.com/views/index.html').read())
-        tags = Tag('site')
+        tags = Tag('tag')
 
         return [tags.processTags(cont)]
 
