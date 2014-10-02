@@ -119,7 +119,7 @@ class Tag:
         return self.replace(vidcontent)
 
     def siteTitle(self, args):
-        return self.replace('test title')
+        return self.replace(Config.siteTitle)
 
     def siteContent(self, arogs):
         return self.replace('')
