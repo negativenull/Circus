@@ -17,8 +17,8 @@ def application(environ, start_response):
         if match is not None:
             environ['myapp.url_args'] = match.groups()
             start_response('200 OK', [('Content-Type', 'text/html')])
-            tag = Tag('site')
-            return tag.processTags(callback(environ, start_response))
+            #tag = Tag('site')
+            return callback(environ, start_response)
 
     start_response('404 NOT FOUND', [('Content-Type', 'text/html')])
     return Urls.not_found(environ, start_response)
