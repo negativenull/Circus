@@ -13,9 +13,9 @@ class Urls:
     @staticmethod
     def index(environ, start_response):
         cont = (open('negativenull.com/views/index.html').read())
-        tags = Tag('site')
-
-        return [tags.processTags(cont)]
+        sitetags = Tag('site')
+        pagetags = Tag('tag')
+        return [sitetags.processTags(pagetags.processTags(cont))]
 
     @staticmethod
     def hello(environ, start_response):
