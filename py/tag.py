@@ -30,7 +30,7 @@ class Tag:
                 params = row
 
             paramarray = {}
-            error=False
+            error = False
             for p in params:
                 kv = p.split("=")
                 try:
@@ -119,7 +119,7 @@ class Tag:
         return self.replace(vidcontent)
 
     def siteTitle(self, args):
-        return self.replace(Config.siteTitle)
+        return self.replace('test title')
 
     def siteContent(self, arogs):
         return self.replace('')
