@@ -5,6 +5,7 @@ sys.path.append('negativenull.com/')
 import re
 from py.urls import Urls
 from py.router import router
+from py.tag import Tag
 
 
 def application(environ, start_response):
@@ -15,7 +16,11 @@ def application(environ, start_response):
         match = re.search(regex, path)
         if match is not None:
             environ['myapp.url_args'] = match.groups()
-            return callback(environ, start_response)
+            start_response('200 OK', [('Content-Type', 'text/html')])
+            tag = Tag('site')
+            return tag.processTags(callback(environ, start_response))
+
+    start_response('404 NOT FOUND', [('Content-Type', 'text/html')])
     return Urls.not_found(environ, start_response)
 
 
