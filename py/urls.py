@@ -12,7 +12,7 @@ class Urls:
 
     @staticmethod
     def index(environ, start_response):
-        cont = (open('negativenull.com/index.html').read())
+        cont = (open('negativenull.com/views/index.html').read())
         tags = Tag('tag')
 
         start_response('200 OK', [('Content-Type', 'text/html')])
@@ -47,7 +47,7 @@ class Urls:
 
     @staticmethod
     def not_found(environ, start_response):
-        cont = (open('negativenull.com/404.html').read())
+        cont = (open('negativenull.com/views/404.html').read())
         start_response('404 NOT FOUND', [('Content-Type', 'text/html')])
         return [cont]
 
