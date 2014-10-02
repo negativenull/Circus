@@ -1,0 +1,31 @@
+<VirtualHost *:80>
+
+    ServerName negativenull.com
+    ServerAlias www.negativenull.com
+
+    DocumentRoot /var/www/negativenull.com/
+
+    Alias /robots.txt /var/www/negativenull.com/robots.txt
+    Alias /favicon.ico /var/www/negativenull.com/favicon.ico
+
+    Alias /css/ /var/www/negativenull.com/css/
+    Alias /js/ /var/www/negativenull.com/js/
+    Alias /img/ /var/www/negativenull.com/img/
+
+
+    <Directory /var/www/negativenull.com/>
+    Order allow,deny
+    Allow from all
+    </Directory>
+
+    WSGIDaemonProcess negativenull.com processes=2 threads=15 display-name=%{GROUP}
+    WSGIProcessGroup negativenull.com
+
+    WSGIScriptAlias / /var/www/negativenull.com/wsgi-scripts/negativenull.com.wsgi
+
+    <Directory /var/www/negativenull.com/wsgi-scripts>
+    Order allow,deny
+    Allow from all
+    </Directory>
+
+</VirtualHost>
