@@ -11,7 +11,7 @@ class Urls:
         pass
 
     @staticmethod
-    def wrapTemplate(self, content):
+    def wrapTemplate(content):
         sitetags = Tag('site')
         header = open('negativenull.com/views/header.html').read()
         header = sitetags.processTags(header)
