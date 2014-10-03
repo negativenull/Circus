@@ -2,7 +2,8 @@ __author__ = 'Nathan Meadows'
 import re
 import csv
 import StringIO
-from config import Config
+
+from config.config import Config
 
 
 class Tag:
