@@ -3,7 +3,7 @@ import re
 import csv
 import StringIO
 
-from config.config import Config
+from py.config import Config
 
 
 class Tag:
