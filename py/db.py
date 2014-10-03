@@ -2,7 +2,7 @@ __author__ = 'Nathan Meadows'
 import psycopg2
 import psycopg2.extras
 
-from config.config import Config
+from py.config import Config
 
 
 class DB:
