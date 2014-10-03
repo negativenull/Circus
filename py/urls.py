@@ -11,11 +11,21 @@ class Urls:
         pass
 
     @staticmethod
+    def wrapTemplate(self, content):
+        sitetags = Tag('site')
+        header = open('negativenull.com/views/header.html').read()
+        header = sitetags.processTags(header)
+
+        footer = open('negativenull.com/views/footer.html').read()
+        footer = sitetags.processTags(footer)
+
+        return header+content+footer
+
+    @staticmethod
     def index(environ, start_response):
         cont = (open('negativenull.com/views/index.html').read())
-        sitetags = Tag('site')
         pagetags = Tag('tag')
-        return [sitetags.processTags(pagetags.processTags(cont))]
+        return [Urls.wrapTemplate(pagetags.processTags(cont))]
 
     @staticmethod
     def hello(environ, start_response):
