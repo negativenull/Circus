@@ -114,7 +114,7 @@ class Tag:
         o = urlparse(url)
         path = o.path
 
-        vidcontent = '<iframe width="' + width + '" height="' + height + '" src="//www.youtube.com/embed' + path + '" frameborder="0" allowfullscreen></iframe>'
+        vidcontent = '<iframe width="' + str(width) + '" height="' + str(height) + '" src="//www.youtube.com/embed' + path + '" frameborder="0" allowfullscreen></iframe>'
 
         return self.replace(vidcontent)
 
