@@ -2,10 +2,10 @@ import sys
 sys.path.append('../')
 sys.path.append('negativenull.com/')
 
+
 import re
 from py.urls import Urls
 from py.router import router
-from py.tag import Tag
 
 
 def application(environ, start_response):
@@ -26,9 +26,9 @@ def application(environ, start_response):
 
 #old main application
 #def applicationbak(environ, start_response):
-#    cont = (open('negativenull.com/index.html').read())
+#    controllers = (open('negativenull.com/index.html').read())
 #    tags = Tag('tag')
 #
 #
 #    start_response('200 OK', [('Content-Type', 'text/html')])
-#    return [tags.processTags(cont)]
+#    return [tags.processTags(controllers)]
