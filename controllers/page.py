@@ -16,9 +16,10 @@ class Page(Urls):
             pageid = escape(args[0])
             db = DB()
             page = db.query("select * from pages where id=%s" % pageid, returnone=True)
+            content = super.tag.processTags(page['content'])
 
         else:
             return Urls.not_found
 
-        return [Urls.wrapTemplate(page['content'])]
+        return [Urls.wrapTemplate(content)]
 

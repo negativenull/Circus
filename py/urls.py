@@ -7,6 +7,8 @@ from py.db import DB
 
 class Urls:
 
+    tag = Tag('tag')
+
     def __init__(self):
         pass
 
