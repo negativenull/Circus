@@ -50,10 +50,10 @@ class Urls:
         else:
             return Urls.not_found
 
-        return [page['content']]
+        return [Urls.wrapTemplate(page['content'])]
 
     @staticmethod
     def not_found(environ, start_response):
         cont = (open('negativenull.com/views/404.html').read())
-        return [cont]
+        return [Urls.wrapTemplate(cont)]
 
