@@ -1,9 +1,7 @@
 __author__ = 'nathan'
 
 from cgi import escape
-from py.tag import Tag
-from py.db import DB
-from py.urls import Urls
+from py.environment import *
 
 
 class Hello(Urls):

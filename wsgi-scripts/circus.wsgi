@@ -1,11 +1,8 @@
 import sys
-sys.path.append('../')
-sys.path.append('negativenull.com/')
-
+sys.path.append('/home/nathan/PycharmProjects/Circus/')
 
 import re
-from py.urls import Urls
-from py.router import router
+from py.environment import *
 
 
 def application(environ, start_response):
@@ -22,13 +19,3 @@ def application(environ, start_response):
     start_response('404 NOT FOUND', [('Content-Type', 'text/html')])
     return Urls.not_found(environ, start_response)
 
-
-
-#old main application
-#def applicationbak(environ, start_response):
-#    controllers = (open('negativenull.com/index.html').read())
-#    tags = Tag('tag')
-#
-#
-#    start_response('200 OK', [('Content-Type', 'text/html')])
-#    return [tags.processTags(controllers)]
