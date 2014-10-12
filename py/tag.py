@@ -2,8 +2,7 @@ __author__ = 'Nathan Meadows'
 import re
 import csv
 import StringIO
-
-from py.config import Config
+from py.environment import *
 
 
 class Tag:

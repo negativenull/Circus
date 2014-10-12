@@ -1,7 +1,6 @@
 __author__ = 'Nathan Meadows'
 
-from py.tag import Tag
-from py.db import DB
+from py.environment import *
 
 
 class Urls:
@@ -14,17 +13,17 @@ class Urls:
     @staticmethod
     def wrapTemplate(content):
         sitetags = Tag('site')
-        header = open('negativenull.com/views/header.html').read()
+        header = open(Config.siteroot+'views/header.html').read()
         header = sitetags.processTags(header)
 
-        footer = open('negativenull.com/views/footer.html').read()
+        footer = open(Config.siteroot+'views/footer.html').read()
         footer = sitetags.processTags(footer)
 
         return header+content+footer
 
     @staticmethod
     def index(environ, start_response):
-        cont = (open('negativenull.com/views/index.html').read())
+        cont = (open(Config.siteroot+'views/index.html').read())
         pagetags = Tag('tag')
         return [Urls.wrapTemplate(pagetags.processTags(cont))]
 
@@ -34,6 +33,6 @@ class Urls:
 
     @staticmethod
     def not_found(environ, start_response):
-        cont = (open('negativenull.com/views/404.html').read())
+        cont = (open(Config.siteroot+'views/404.html').read())
         return [Urls.wrapTemplate(cont)]
 
