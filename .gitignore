@@ -55,3 +55,7 @@ target/
 
 # PyCharm
 .idea/
+
+# circus stuff
+py/config.py
+wsgi-scripts/circus.wsgi
