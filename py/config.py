@@ -15,13 +15,13 @@ class Config:
     dbpassword = ''
 
     #for sqlite3
-    dblocation = '/home/nathan/test.db'
+    dblocation = '/Users/nathan/test.db'
 
     siteTitle = 'Circus Framework'
 
     #logging
-    loglocation = '/home/nathan/circus.log'
-    loglevel = 'debug'  # debug, warn, error
+    loglocation = '/users/nathan/circus.log'
+    loglevel = 'warn'  # debug, info, warn, error, critical
 
     def __init__(self):
         pass

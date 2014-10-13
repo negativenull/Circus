@@ -12,8 +12,7 @@ class Page(Urls):
         args = environ['myapp.url_args']
         if args:
             pageid = escape(args[0])
-            db = DB()
-            page = db.query("select * from pages where id=%s" % pageid, returnone=True)
+            page = Env.db.query("select * from pages where id=%s" % pageid, returnone=True)
             content = Urls.tag.processTags(page['content'])
 
         else:
