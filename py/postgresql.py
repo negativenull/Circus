@@ -1,5 +1,6 @@
 __author__ = 'Nathan Meadows'
 import psycopg2
+import psycopg2.extras
 from py.environment import *
 
 
