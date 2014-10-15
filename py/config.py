@@ -3,9 +3,9 @@ __author__ = 'Nathan Meadows'
 
 class Config:
 
-    siteroot = '/home/nathan/PycharmProjects/Circus/'
+    siteroot = '/var/www/Circus/'
 
-    dbtype = 'sqlite3'
+    dbtype = 'postgresql'
 
     #for postgresql
     dbname = 'negativenullcom'

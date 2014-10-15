@@ -1,4 +1,6 @@
 from py.environment import *
+from controllers.page import Page
+from controllers.hello import Hello
 
 #map urls to function
 router = [

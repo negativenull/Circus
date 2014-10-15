@@ -9,8 +9,8 @@ from py.db import DB
 from py.functions import Functions
 
 #controllers go here
-from controllers.page import Page
-from controllers.hello import Hello
+#from controllers.page import Page
+#from controllers.hello import Hello
 
 #router must be last
 from py.router import router
