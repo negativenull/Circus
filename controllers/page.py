@@ -4,11 +4,12 @@ from cgi import escape
 from py.environment import *
 
 
-
 class Page(Urls):
 
     @staticmethod
     def page(environ, start_response):
+	from py.environment import *
+
 
         args = environ['myapp.url_args']
         if args:
