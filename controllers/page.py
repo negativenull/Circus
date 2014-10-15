@@ -1,11 +1,8 @@
 __author__ = 'Nathan Meadows'
 
 from cgi import escape
-<<<<<<< HEAD
 from py.environment import Env, Urls
-=======
-from py.environment import *
->>>>>>> origin/master
+
 
 
 class Page(Urls):

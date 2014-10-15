@@ -28,10 +28,6 @@ class Env(object):
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
     @staticmethod
     def log(message, level='warn'):
 
