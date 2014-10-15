@@ -1,7 +1,7 @@
 __author__ = 'Nathan Meadows'
 
 from cgi import escape
-from py.environment import Env, Urls
+from py.environment import *
 
 
 
