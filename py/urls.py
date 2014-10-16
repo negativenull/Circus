@@ -25,7 +25,7 @@ class Urls:
     def index(environ, start_response):
         cont = (open(Config.siteroot+'views/index.html').read())
         pagetags = Tag('tag')
-        return [Urls.wrapTemplate(pagetags.processTags(cont))]
+        return Urls.wrapTemplate(pagetags.processTags(cont))
 
 
 
@@ -34,5 +34,5 @@ class Urls:
     @staticmethod
     def not_found(environ, start_response):
         cont = (open(Config.siteroot+'views/404.html').read())
-        return [Urls.wrapTemplate(cont)]
+        return Urls.wrapTemplate(cont)
 

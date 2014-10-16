@@ -8,8 +8,7 @@ class Page(Urls):
 
     @staticmethod
     def page(environ, start_response):
-	from py.environment import *
-
+        from py.environment import Env
 
         args = environ['myapp.url_args']
         if args:
@@ -19,6 +18,5 @@ class Page(Urls):
 
         else:
             return Urls.not_found
-
-        return [Urls.wrapTemplate(content)]
+        return Urls.wrapTemplate(content)
 

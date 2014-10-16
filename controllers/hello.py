@@ -14,6 +14,6 @@ class Hello(Urls):
         else:
             subject = 'World'
 
-        return [Urls.wrapTemplate('''Hello %(subject)s
+        return Urls.wrapTemplate('''Hello %(subject)s
                 Hello %(subject)s!
-                ''' % {'subject': subject})]
+                ''' % {'subject': subject})
