@@ -14,7 +14,7 @@ class Page(Urls):
         if args:
 
             if args[0] == 'add':
-                Page.add(environ, start_response)
+                return Page.add(environ, start_response)
 
             pageid = escape(args[0])
             page = Env.db.query("select * from pages where id=%s" % pageid, returnone=True)
@@ -34,7 +34,7 @@ class Page(Urls):
 
         content = '<h1>Post data</h1><ul>'
         for k,v in data:
-            content += "<li>%s = %s</li>" % (k,v)
+            content += "<li>%s = %s</li>" % (k,v[0])
         content += "</ul>"
 
         return Urls.wrapTemplate(content)
