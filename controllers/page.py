@@ -33,7 +33,7 @@ class Page(Urls):
         from py.environment import Env
 
         content = '<h1>Post data</h1><ul>'
-        for k,v in data:
+        for k,v in data.iteritems():
             content += "<li>%s = %s</li>" % (k,v[0])
         content += "</ul>"
 
