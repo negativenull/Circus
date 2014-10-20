@@ -21,3 +21,11 @@ class Postgres(DB):
             return self.cur.fetchall()
         elif returnone:
             return self.cur.fetchone()
+
+    def gettables(self):
+        query = """SELECT table_name
+                   FROM information_schema.tables
+                   WHERE table_schema='public'
+                   AND table_type='BASE TABLE';"""
+
+        return self.query(query, returnall=True)

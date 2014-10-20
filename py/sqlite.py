@@ -19,4 +19,6 @@ class Sqlite(DB):
         elif returnone:
             return self.cur.fetchone()
 
-print
+    def gettables(self):
+        query = """SELECT name FROM my_db.sqlite_master WHERE type='table';"""
+        return self.query(query, returnall=True)
