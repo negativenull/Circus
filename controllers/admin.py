@@ -11,7 +11,10 @@ class Admin(Urls):
         from py.environment import Env
 
         tables = Env.db.gettables()
-        content = '<br />'.join(tables)
+        content = '<h1>Database tables</h1><ul>'
+        for table in tables:
+            content += "<li>%s</li>" % table['table_name']
+        content += "</ul>"
 
         return Urls.wrapTemplate(content)
 
