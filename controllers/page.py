@@ -26,11 +26,14 @@ class Page(Urls):
 
     @staticmethod
     def add(environ, start_response):
-        postdata = environ['wsgi.input'].read()
+        postdata = environ['wsgi.input'].read()  #param1=value1&param2=value2
+        import urlparse
+        data = urlparse.parse_qs(postdata)
+
         from py.environment import Env
 
         content = '<h1>Post data</h1><ul>'
-        for k,v in postdata:
+        for k,v in data:
             content += "<li>%s = %s</li>" % (k,v)
         content += "</ul>"
 
