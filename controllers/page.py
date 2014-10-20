@@ -12,6 +12,10 @@ class Page(Urls):
 
         args = environ['myapp.url_args']
         if args:
+
+            if args[0] == 'add':
+                Page.add(environ, start_response)
+
             pageid = escape(args[0])
             page = Env.db.query("select * from pages where id=%s" % pageid, returnone=True)
             content = Urls.tag.processTags(page['content'])
@@ -20,3 +24,14 @@ class Page(Urls):
             return Urls.not_found
         return Urls.wrapTemplate(content)
 
+    @staticmethod
+    def add(environ, start_response):
+        postdata = environ['wsgi.input'].read()
+        from py.environment import Env
+
+        content = '<h1>Post data</h1><ul>'
+        for k,v in postdata:
+            content += "<li>%s = %s</li>" % (k,v)
+        content += "</ul>"
+
+        return Urls.wrapTemplate(content)
